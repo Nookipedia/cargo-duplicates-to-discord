@@ -23,7 +23,9 @@ results = ''
 
 try:
     for table in TABLES:
-        dupes = requests.get(url = WIKI_DOMAIN + WIKI_API_PATH, params = {'action': 'cargoquery', 'format': 'json', 'limit': '500', 'tables': table, 'fields': TABLES[table], 'group_by': TABLES[table], 'having': 'COUNT(*)>1'}).json()
+        fields = TABLES[table].replace('_pageName', '_pageName=pageName')
+        group_by = TABLES[table].replace('_pageName', 'pageName')
+        dupes = requests.get(url = WIKI_DOMAIN + WIKI_API_PATH, params = {'action': 'cargoquery', 'format': 'json', 'limit': '500', 'tables': table, 'fields': fields, 'group_by': group_by, 'having': 'COUNT(*)>1'}).json()
         if dupes['cargoquery']:
             results += table + ' - ' + str(len(dupes['cargoquery'])) + ' dupe(s)\n'
         sleep(SLEEP)
