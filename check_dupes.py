@@ -6,17 +6,76 @@ import requests
 import json
 from time import sleep
 
-WEBHOOK = 'https://discord.com/api/webhooks/{webhook.id}/{webhook.token}'
-WIKI_DOMAIN = 'https://example.com'
+WEBHOOK = 'https://discord.com/api/webhooks/{webhook.id}/{webhook.token}' # INSERT DISCORD WEBHOOK URL HERE
+WIKI_DOMAIN = 'https://nookipedia.com'
 WIKI_BASE_PATH = '/wiki/'
 WIKI_API_PATH = '/w/api.php'
-EMBED_DESCRIPTION = "Duplicate rows have been found in the wiki's [Cargo tables](" + WIKI_DOMAIN + WIKI_BASE_PATH + "Special:CargoTables)."
-EMBED_COLOR = '15158332'
-EMBED_FOOTER = ''
-EMBED_THUMBNAIL = ''
+EMBED_DESCRIPTION = "GRAAAH! We've got some Cargo tables with duplicate rows. Will a Cargo Technician please [recreate](" + WIKI_DOMAIN + WIKI_BASE_PATH + "Special:CargoTables) these?"
+EMBED_COLOR = '14250002'
+EMBED_FOOTER = 'Got it? NOW SCRAM!'
+EMBED_THUMBNAIL = 'https://dodo.ac/np/images/e/e0/Cargo_logo_cropped.png'
 SLEEP = 2 # Seconds to sleep between Cargo queries
-TABLES = { # Populate with names of tables to check; value is columns that make up the table's unique identifier
-    'table': 'column,column2'
+TABLES = {
+    'amiibo_card': 'number',
+    'cf_art': 'name',
+    'cf_bug': 'name',
+    'cf_fish': 'name',
+    'cf_house': 'villager',
+    'cf_villager': 'name',
+    'e_card': 'number',
+    'furniture_collection': 'url',
+    'hhd_villager': 'name',
+    'nh_art': 'name',
+    'nh_bug': 'name',
+    'nh_calendar': 'date,event',
+    'nh_clothing': 'en_name',
+    'nh_clothing_variation': 'en_name,variation',
+    'nh_distribution': 'en_name',
+    'nh_fish': 'name',
+    'nh_fossil': 'name',
+    'nh_fossil_group': 'name',
+    'nh_furniture': 'en_name',
+    'nh_furniture_variation': 'en_name,variation,pattern',
+    'nh_house': 'villager',
+    'nh_interior': 'en_name',
+    'nh_item': 'en_name',
+    'nh_language_name': 'en_name',
+    'nh_music': 'en_name',
+    'nh_photo': 'en_name',
+    'nh_photo_variation': 'en_name,variation',
+    'nh_recipe': 'en_name',
+    'nh_sea_creature': 'name',
+    'nh_tool': 'en_name',
+    'nh_tool_variation': 'en_name,variation',
+    'nh_villager': 'name',
+    'nl_art': 'name',
+    'nl_bug': 'name',
+    'nl_fish': 'name',
+    'nl_house': 'villager',
+    'nl_sea_creature': 'name',
+    'nl_villager': 'name',
+    'nlwa_rv': 'name,interior_image',
+    'pc_furniture': 'en_name',
+    'pc_recipe': 'en_name',
+    'pc_recipe_reissue': 'en_name',
+    'pc_villager': 'name',
+    'pg_bug': 'name',
+    'pg_clothing': 'en_name',
+    'pg_fish': 'name',
+    'pg_fossil': 'name',
+    'pg_furniture': 'en_name,in_dnm,in_plus,in_pg,in_e_plus',
+    'pg_house': 'villager',
+    'pg_interior': 'en_name',
+    'pg_item': 'en_name',
+    'pg_language_name': 'en_name,de_name,es_name,fr_name,it_name,ja_name',
+    'pg_umbrella': 'en_name',
+    'pg_villager': 'name',
+    'song': 'name',
+    'special_character': 'name',
+    #'ssbu_spirit': 'name', # Commented out due to valid duplicates
+    'villager': 'url',
+    'ww_house': 'villager',
+    'ww_villager': 'name'
 }
 
 results = ''
