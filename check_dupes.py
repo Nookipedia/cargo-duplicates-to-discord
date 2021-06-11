@@ -29,6 +29,7 @@ try:
         sleep(SLEEP)
 
     if results:
+        print(results)
         payload = {
             "embeds": [
                 {
@@ -51,7 +52,7 @@ try:
             ]
         }
 
-        print(requests.post(WEBHOOK, json = payload).status_code)
+        print('Discord webhook status: ' + requests.post(WEBHOOK, json = payload).status_code)
     else:
         print('No duplicates found!')
 
