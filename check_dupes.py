@@ -54,7 +54,7 @@ try:
             ]
         }
 
-        print('Discord webhook status: ' + requests.post(WEBHOOK, json = payload).status_code)
+        print('Discord webhook status: ' + str(requests.post(WEBHOOK, json = payload).status_code))
     else:
         print('No duplicates found!')
 
